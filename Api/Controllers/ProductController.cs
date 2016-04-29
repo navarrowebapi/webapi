@@ -33,9 +33,38 @@ namespace Api.Controllers
         }
 
         // GET: api/Product/5
-        public string Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return "value";
+            var produto1 = new Product
+            {
+                Id = 1,
+                Name = "Placa de Rede",
+                Category = "Hardware",
+                Price = 120m
+            };
+
+            var produto2 = new Product
+            {
+                Id = 2,
+                Name = "Placa mãe",
+                Category = "Hardware",
+                Price = 480m
+            };
+
+            var produto3 = new Product
+            {
+                Id = 3,
+                Name = "Antivirus",
+                Category = "Software",
+                Price = 80m
+            };
+
+            listaDeProdutos.Add(produto1);
+            listaDeProdutos.Add(produto2);
+            listaDeProdutos.Add(produto3);
+
+            var produto = listaDeProdutos.Find(x => x.Id == id);
+            return Ok(produto);
         }
 
         // POST: api/Product
